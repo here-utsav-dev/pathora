@@ -23,7 +23,7 @@ Update `context/progress-tracker.md` after each meaningful implementation change
 
 If implementation changes the architecture, scope, or standards documented in the context files, update the relevant file before continuing.
 
-## Team Workflow (Utsav + Reejan)
+## Team Workflow (Utsav + Reejan + Roshan)
 
 ### Who Does What
 
@@ -31,6 +31,7 @@ If implementation changes the architecture, scope, or standards documented in th
 |--------|--------|------|------|
 | **Utsav** | `context/utsav/` | Backend / Architecture Lead | Auth, API routes, token ledger, fee engine, classifier, rate limiting, DB schema, deployment |
 | **Reejan** | `context/reejan/` | Frontend / UI Lead | Dashboard, courses, admin panel, auth pages, all components, theme, responsive design |
+| **Roshan** | `context/roshan/` | To Be Assigned | Coordinate with team to determine area of ownership |
 
 ### Starting a Session
 
@@ -47,6 +48,11 @@ Read context/AGENTS.md. I'm Utsav (backend). Read context/utsav/my-scope.md and 
 **Reejan says:**
 ```
 Read context/AGENTS.md. I'm Reejan (frontend). Read context/reejan/my-scope.md and context/reejan/my-progress.md. Tell me what's next.
+```
+
+**Roshan says:**
+```
+Read context/AGENTS.md. I'm Roshan. Read context/roshan/my-scope.md and context/roshan/my-progress.md. Tell me what's next.
 ```
 
 ### During a Session

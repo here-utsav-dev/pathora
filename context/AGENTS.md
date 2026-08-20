@@ -41,9 +41,9 @@ opencode
 
 Then say: `"Read context/AGENTS.md and continue from where we left off"`
 
-The context files are the shared source of truth. Both of you must update `progress-tracker.md` before ending a session.
+The context files are the shared source of truth. All of you must update `progress-tracker.md` before ending a session.
 
-## Team Workflow (Utsav + Reejan)
+## Team Workflow (Utsav + Reejan + Roshan)
 
 ### Who Does What
 
@@ -51,6 +51,7 @@ The context files are the shared source of truth. Both of you must update `progr
 |--------|--------|------|------|
 | **Utsav** | `context/utsav/` | Backend / Architecture Lead | Auth, API routes, token ledger, fee engine, classifier, rate limiting, DB schema, deployment |
 | **Reejan** | `context/reejan/` | Frontend / UI Lead | Dashboard, courses, admin panel, auth pages, all components, theme, responsive design |
+| **Roshan** | `context/roshan/` | To Be Assigned | Coordinate with team to determine area of ownership |
 
 ### Starting a Session
 
@@ -62,6 +63,11 @@ Read context/AGENTS.md. I'm Utsav (backend). Read context/utsav/my-scope.md and 
 **Reejan says:**
 ```
 Read context/AGENTS.md. I'm Reejan (frontend). Read context/reejan/my-scope.md and context/reejan/my-progress.md. Tell me what's next.
+```
+
+**Roshan says:**
+```
+Read context/AGENTS.md. I'm Roshan. Read context/roshan/my-scope.md and context/roshan/my-progress.md. Tell me what's next.
 ```
 
 ### Ending a Session

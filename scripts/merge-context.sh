@@ -1,5 +1,5 @@
 #!/bin/bash
-# merge-context.sh — Merges personal progress from utsav/ and reejan/ into main progress-tracker.md
+# merge-context.sh — Merges personal progress from utsav/, reejan/, and roshan/ into main progress-tracker.md
 # Run from project root: bash scripts/merge-context.sh
 
 set -e
@@ -7,15 +7,14 @@ set -e
 MAIN="context/progress-tracker.md"
 UTSAV="context/utsav/my-progress.md"
 REEJAN="context/reejan/my-progress.md"
-UTSAV_NOTES="context/utsav/my-notes.md"
-REEJAN_NOTES="context/reejan/my-notes.md"
+ROSHAN="context/roshan/my-progress.md"
 MERGED_LOG="context/merged-history.md"
 
 echo "=== PATHORA Context Merge ==="
 echo ""
 
 # Check files exist
-for f in "$UTSAV" "$REEJAN"; do
+for f in "$UTSAV" "$REEJAN" "$ROSHAN"; do
   if [ ! -f "$f" ]; then
     echo "ERROR: $f not found"
     exit 1
@@ -33,14 +32,11 @@ extract_section() {
 DATE=$(date +%Y-%m-%d)
 
 # Build merged content
-echo "Merging progress from utsav and reejan into $MAIN..."
+echo "Merging progress from utsav, reejan, and roshan into $MAIN..."
 echo ""
 
 # Create backup
 cp "$MAIN" "${MAIN}.bak"
-
-# Read existing main file (everything before "## In Progress")
-MAIN_HEADER=$(awk '/^## In Progress/{exit} {print}' "$MAIN" | head -n -1)
 
 # Extract personal progress
 UTSAV_COMPLETED=$(extract_section "$UTSAV" "My Completed")
@@ -52,6 +48,11 @@ REEJAN_COMPLETED=$(extract_section "$REEJAN" "My Completed")
 REEJAN_IN_PROGRESS=$(extract_section "$REEJAN" "My In Progress")
 REEJAN_NEXT=$(extract_section "$REEJAN" "My Next Up")
 REEJAN_BLOCKERS=$(extract_section "$REEJAN" "My Blockers")
+
+ROSHAN_COMPLETED=$(extract_section "$ROSHAN" "My Completed")
+ROSHAN_IN_PROGRESS=$(extract_section "$ROSHAN" "My In Progress")
+ROSHAN_NEXT=$(extract_section "$ROSHAN" "My Next Up")
+ROSHAN_BLOCKERS=$(extract_section "$ROSHAN" "My Blockers")
 
 # Write merged main file
 cat > "$MAIN" << EOF
@@ -75,6 +76,9 @@ ${UTSAV_COMPLETED:-- None yet.}
 ### Reejan (Frontend)
 ${REEJAN_COMPLETED:-- None yet.}
 
+### Roshan (Team)
+${ROSHAN_COMPLETED:-- None yet.}
+
 ## In Progress
 
 ### Utsav (Backend)
@@ -82,6 +86,9 @@ ${UTSAV_IN_PROGRESS:-- None yet.}
 
 ### Reejan (Frontend)
 ${REEJAN_IN_PROGRESS:-- None yet.}
+
+### Roshan (Team)
+${ROSHAN_IN_PROGRESS:-- None yet.}
 
 ## Next Up
 
@@ -91,6 +98,9 @@ ${UTSAV_NEXT:-- None yet.}
 ### Reejan (Frontend)
 ${REEJAN_NEXT:-- None yet.}
 
+### Roshan (Team)
+${ROSHAN_NEXT:-- None yet.}
+
 ## Blockers
 
 ### Utsav
@@ -98,6 +108,9 @@ ${UTSAV_BLOCKERS:-- None yet.}
 
 ### Reejan
 ${REEJAN_BLOCKERS:-- None yet.}
+
+### Roshan
+${ROSHAN_BLOCKERS:-- None yet.}
 
 ## Open Questions
 
@@ -136,6 +149,7 @@ cat >> "$MERGED_LOG" << EOF
 ## $DATE — Auto-merge
 - Utsav completed items merged
 - Reejan completed items merged
+- Roshan completed items merged
 - Main tracker updated
 EOF
 
